@@ -9,16 +9,15 @@ import java.util.stream.Collectors;
 
 public class Main {
 
-
     public static <String> List<String> readSymptomFromFile(String filepath)throws IOException{ /**lecture des symptomes d'un fichier texte et les mettre dans une liste*/
 
         List <String> myList = new ArrayList<String>((Collection<? extends String>) Files.readAllLines(Paths.get("C:\\Users\\Falcon\\Desktop\\Project2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt")));
         return myList;
     }
 
+
     public static <String> List<String> removeDuplicates(List<String> myList) /**méthode de suppression des doublons sur la liste*/
     {
-
         List<String> newList = new ArrayList<String>();  // Create an empty new ArrayList
 
         // Traverse through the first list
@@ -39,25 +38,19 @@ public class Main {
     }
 
 
-    public static void writingFile(String filepathWriting, List<String> sortedList) throws IOException { /** writing file from an ArrayList our aim was to write each single ArrayList element onto our new file so we decided to build a function*/
+    public static void writingFileAndCount(String filepathWriting, List<String> sortedList, List<String>myList) throws IOException { /** writing file from an ArrayList our aim was to write each single ArrayList element onto our new file so we decided to build a function and counting occurrences*/
 
-        FileWriter writer = new FileWriter(filepathWriting); //créer un fichier de sortie à partir de la liste triée
+        FileWriter writer = new FileWriter(filepathWriting); // creating a new empty file
+        //créer un fichier de sortie à partir de la liste triée
         for (int index = 0; index < sortedList.size(); index++) { //parcourir la liste triée
-            writer.write(sortedList.get(index) + System.lineSeparator());// écrire chaque ligne de la liste sur le fichier
+            int nbreOccurrence = Collections.frequency(myList, myList.get(index));
+            writer.write(sortedList.get(index) + ""+ "="+ nbreOccurrence + System.lineSeparator());// écrire chaque ligne de la liste sur le fichier
         }
         writer.close();
     }
 
-   /* public static int count(List<String> myList) {
-        int nbreOccurrence=0;
-        for (int index = 0; index < myList.size(); index++)
-            nbreOccurrence += Collections.frequency(myList,myList.get(index));
-
-        return nbreOccurrence;
-    } */
-
-
     public static void main(String[] args) throws IOException {  // drive function
+
 
         //lire le fichier puis le convertir en une liste (produire une méthode)
         //List<String> myList = new ArrayList<String>(Files.readAllLines(Paths.get("C:\\Users\\Falcon\\Desktop\\Project2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt")));
@@ -77,12 +70,10 @@ public class Main {
 
             System.out.println(sortedList.get(index) + "=" + nbreOccurrence);//afficher la liste triée
 
-            writingFile("C:\\Users\\Falcon\\Desktop\\Project2\\result.out",sortedList);//on appelle la méthode qui permet d'écrire sur un fichier dépuis une liste
+            writingFileAndCount("C:\\Users\\Falcon\\Desktop\\Project2\\result.out",sortedList,myList);//on appelle la méthode qui permet d'écrire sur un fichier dépuis une liste
 
         }
-
-    }
-
+      }
     }
 
 
