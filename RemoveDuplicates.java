@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RemoveDuplicates implements IRemoveDuplicates {
 
-    public  <String> List<String> removeDuplicates(List<String> myList){ /**méthode de suppression des doublons sur la liste*/
+    public  List<String> removeDuplicates(List<String> myList){ /**méthode de suppression des doublons sur la liste*/
 
         List<String> newList = new ArrayList<String>();  // Create an empty new ArrayList
 

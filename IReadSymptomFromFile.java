@@ -4,5 +4,6 @@ import java.io.IOException;
 import java.util.*;
 
 public interface IReadSymptomFromFile {
-    <String> List<String> readSymptomFromFile(String filepath) throws IOException;
+
+    List<String> readSymptomFromFile(String filepath) throws IOException;
 }
